@@ -22,7 +22,8 @@ h1{font-size:38px;font-weight:800;margin-top:22px;text-shadow:0 2px 10px rgba(0,
 </head>
 <body>
 <div class="phone">
-  <video class="bg-video" id="bgVideo" autoplay muted loop playsinline preload="auto" poster="IMG-20261127-WA0003.jpg">
+  <!-- الفيديو - متظبط عشان ميعلقش -->
+  <video class="bg-video" id="bgVideo" autoplay muted loop playsinline preload="metadata" poster="IMG-20261127-WA0003.jpg">
     <source src="VID-20261127-WA0006.mp4" type="video/mp4">
   </video>
   <div class="overlay"></div>
@@ -56,15 +57,19 @@ h1{font-size:38px;font-weight:800;margin-top:22px;text-shadow:0 2px 10px rgba(0,
 </div>
 
 <script>
+// حل تعليق الفيديو - يشغله غصب عنه كل ثانية لو وقف
 var v = document.getElementById('bgVideo');
 v.muted = true;
 v.play().catch(function(){});
+setInterval(function(){
+  if(v.paused && !document.hidden){ v.play(); }
+}, 1000);
 document.addEventListener('click', function(){
   if(v.paused){ v.play(); }
-},{once:true});
+});
 document.addEventListener('touchstart', function(){
   if(v.paused){ v.play(); }
-},{once:true});
+});
 </script>
 </body>
 </html>

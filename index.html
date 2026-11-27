@@ -8,9 +8,7 @@
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
 body{background:#000;display:flex;justify-content:center;padding:0}
 .phone{width:100%;max-width:430px;min-height:100vh;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;color:#fff;background:#071226}
-/* الفيديو في الخلفية */
 .bg-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
-/* طبقة غامقة عشان الكلام يبان فوق الفيديو */
 .overlay{position:absolute;inset:0;background:linear-gradient(to bottom, rgba(7,18,38,.55), rgba(7,18,38,.60) 45%, rgba(7,18,38,.92));z-index:1}
 .top,.eagle-top,.wings,.profile,h1,.sub,.stats,.socials,.follow,.verified,.extra{position:relative;z-index:2}
 .top{width:100%;display:flex;justify-content:space-between;padding:18px 24px;font-size:15px;font-weight:700}
@@ -29,4 +27,62 @@ h1{font-size:37px;font-weight:800;margin-top:18px;text-shadow:0 2px 10px rgba(0,
 .check{width:24px;height:24px;background:#d4af37;color:#071226;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800}
 .extra{margin-top:14px;display:flex;gap:10px;padding-bottom:30px}
 .extra a{color:#fff;font-size:13px;text-decoration:none;border:1px solid #d4af37;padding:7px 12px;border-radius:20px;background:rgba(0,0,0,.35)}
-.play-btn{position:absolute;top:14
+.play-btn{position:absolute;top:14px;right:14px;z-index:5;background:rgba(0,0,0,.5);color:#fff;border:1px solid #d4af37;padding:6px 10px;border-radius:20px;font-size:12px;cursor:pointer}
+</style>
+</head>
+<body>
+<div class="phone">
+  <!-- الفيديو بتاعك -->
+  <video class="bg-video" id="bgVideo" autoplay muted loop playsinline preload="auto" poster="IMG-20261127-WA0003.jpg">
+    <source src="VID-20261127-WA0006.mp4" type="video/mp4">
+  </video>
+  <div class="overlay"></div>
+
+  <button class="play-btn" onclick="document.getElementById('bgVideo').play();this.style.display='none'">▶ تشغيل</button>
+
+  <div class="top"><span>9:41</span><b>11 — Eagle Wings</b><span>📶 🔋</span></div>
+
+  <svg class="eagle-top" viewBox="0 0 320 130" fill="#d4af37">
+    <path d="M160 95 L145 65 L110 75 L130 50 L95 45 L125 30 L110 5 L150 20 L160 0 L170 20 L210 5 L195 30 L225 45 L190 50 L210 75 L175 65 Z"/>
+    <path d="M160 105 C140 105 120 95 105 80 C120 85 135 85 160 85 C185 85 200 85 215 80 C200 95 180 105 160 105 Z" opacity=".9"/>
+    <path d="M0 85 Q40 40 110 60 Q70 70 60 85 Q110 75 160 75 Q210 75 260 85 Q250 70 210 60 Q280 40 320 85 Q280 95 210 90 Q160 100 110 90 Q40 95 0 85 Z" opacity=".85"/>
+    <circle cx="160" cy="55" r="10" fill="#d4af37"/>
+  </svg>
+
+  <svg class="wings" viewBox="0 0 430 220" fill="#d4af37">
+    <path d="M215 110 L10 20 L60 60 L15 55 L70 95 L30 95 L95 130 L60 135 L140 160 L110 170 L215 175 Z"/>
+    <path d="M215 110 L420 20 L370 60 L415 55 L360 95 L400 95 L335 130 L370 135 L290 160 L320 170 L215 175 Z"/>
+  </svg>
+
+  <!-- الصورة الشخصية - WA0003 -->
+  <div class="profile">
+    <img src="IMG-20261127-WA0003.jpg" onerror="this.src='IMG-20261127-WA0005.jpg'" alt="Ahmed Fayez">
+  </div>
+
+  <h1>Ahmed Fayez</h1>
+  <div class="sub">Police Officer • Eagle Division</div>
+  <div class="stats"><b>1.2K</b> Followers • <b>320</b> Following • <b>45</b> Posts</div>
+
+  <div class="socials">
+    <a href="https://instagram.com/_a7me5_soliman" target="_blank">📸</a>
+    <a href="https://www.facebook.com/share/1DU1NDY21w/" target="_blank">📘</a>
+    <a href="https://www.tiktok.com/@ahmed.fayez516" target="_blank">🎵</a>
+  </div>
+
+  <button class="follow" onclick="window.open('https://instagram.com/_a7me5_soliman','_blank')">Follow</button>
+  <div class="verified"><span class="check">✓</span> Verified <span>⌄</span></div>
+
+  <div class="extra">
+    <a href="https://t.me/+201271357222" target="_blank">✈️ Telegram</a>
+    <a href="https://wa.me/201271357222" target="_blank">💬 WhatsApp</a>
+  </div>
+</div>
+
+<script>
+document.addEventListener('click', function(){
+  var v = document.getElementById('bgVideo');
+  if(v.paused){ v.play(); }
+},{once:true});
+</script>
+</body>
+</html>
